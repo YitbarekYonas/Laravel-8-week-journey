@@ -469,12 +469,6 @@ Each week folder contains daily checkpoints with:
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 🙏 Acknowledgments
 
 - [Laravel Documentation Team](https://laravel.com/) - For comprehensive docs
