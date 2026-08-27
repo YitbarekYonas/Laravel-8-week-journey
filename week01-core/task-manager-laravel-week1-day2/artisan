@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Contracts\Console\Kernel;
+use Symfony\Component\Console\Input\ArgvInput;
+
+define('LARAVEL_START', microtime(true));
+
+// ── What this file actually is ──────────────────────────────────────────
+// This is the ENTIRE implementation of the `artisan` CLI — everything you
+// type after "php artisan" (migrate, make:controller, tinker, route:list,
+// etc.) is dispatched from here. It's not a compiled binary or a separate
+// tool; it's a plain PHP script that boots the same application container
+// your HTTP requests use (see public/index.php), just through the console
+// kernel instead of the HTTP kernel.
+
+// Register the Composer autoloader — every class in app/, and every
+// vendor package, becomes available from this line on. Nothing works
+// before this runs.
+require __DIR__.'/vendor/autoload.php';
+
+// Bootstrap the full framework: config, service providers, the container
+// itself. This returns the same $app instance regardless of whether the
+// request came in over HTTP or the CLI.
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+// Resolve the CONSOLE kernel out of the container (not the HTTP kernel —
+// artisan commands go through a different kernel implementation, but
+// both share the same underlying application/container).
+$status = $app->handle(
+    input: new ArgvInput,
+    type: Kernel::class
+);
+
+exit($status);
