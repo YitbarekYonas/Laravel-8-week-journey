@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Contracts\Console\Kernel;
+use Symfony\Component\Console\Input\ArgvInput;
+
+define('LARAVEL_START', microtime(true));
+
+// This is the ENTIRE implementation of the `artisan` CLI — everything you
+// type after "php artisan" is dispatched from here. It's a plain PHP
+// script that boots the same application container your HTTP requests
+// use (see public/index.php), just through the console kernel instead of
+// the HTTP kernel.
+
+require __DIR__.'/vendor/autoload.php';
+
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+$status = $app->handle(
+    input: new ArgvInput,
+    type: Kernel::class
+);
+
+exit($status);
