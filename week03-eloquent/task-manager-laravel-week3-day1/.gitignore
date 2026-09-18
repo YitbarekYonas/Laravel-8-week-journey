@@ -1,0 +1,30 @@
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+
+# Week 3 Day 1 — a real project gitignores its local SQLite database
+# (it's per-developer local data, not something to version-control).
+# This zip ships database/database.sqlite anyway, as a convenience empty
+# starting point — normally that file wouldn't be committed at all; it'd
+# be created locally via `touch database/database.sqlite` before running
+# `php artisan migrate` for the first time.
+database/database.sqlite
